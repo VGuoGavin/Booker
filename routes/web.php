@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +22,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::group(['middleware'=>['auth']],function(){
+    Route::get('/meetingroom', [App\Http\Controllers\MeetingRoomController::class, 'index'])->name('meetingroom');
+    Route::get('/meeting-room/create', [App\Http\Controllers\MeetingRoomController::class, 'create'])->name('meeting-room.create');
+    Route::post('/meeting-room/store', [App\Http\Controllers\MeetingRoomController::class, 'store'])->name('meeting-room.store');
+});
