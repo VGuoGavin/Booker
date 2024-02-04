@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $title }} · RoomBooker</title>
+    <title>Booker</title>
     <link href="{{ mix('css/dashboard.css') }}" rel="stylesheet" type="text/css">
     @yield('custom-css')
 </head>

@@ -1,4 +1,4 @@
-@extends('layouts.front.app')
+@extends('layouts.dashboard.app')
 
 @section('custom-css')
     <style>
@@ -30,7 +30,7 @@
         <div class="masonry-item  w-100">
             <div class="row gap-20">
                 <div class='col-md-3'>
-                    <a class="hoverable layers bd bgc-red-400 c-white p-20">
+                    <a class="hoverable layers bd bgc-red-400 c-white p-20" href="{{ route('drafts.create.empty') }}">
                         <div class="layer w-100 mB-10">
                             <h6 class="lh-1"><strong>Create new booking</strong></h6>
                         </div>
@@ -92,7 +92,7 @@
                                     <i class="c-amber-700 ti-timer fsz-xl"></i>
                                 </div>
                                 <div class="peer">
-                                    
+                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-amber-100 c-amber-700">{{ $pending_num }}</span>
                                 </div>
                             </div>
                         </div>
@@ -109,9 +109,18 @@
                         <a class="peer" href="">View all</a>
                     </div>
                     <div class="layer w-100 p-20">
-                 
+                        @unless ($announcements->isEmpty())
+                            <div class="list-group">
+                                @foreach ($announcements as $announcement)
+                                    <a href="#" class="list-group-item list-group-item-action tov-e ai-c d-f">
+                                        <span class="fxg-1 font-weight-bold">{{ str_limit($announcement->title, $limit = 20, $end = '...')}}</span>
+                                        <span>Posted on {{ $announcement->posted_at->format('d-M-y H:i') }}</span>
+                                    </a>
+                                @endforeach
+                            </div>
+                        @else
                             <p class="m-0">There are no announcements</p>
-                        
+                        @endunless
                     </div>
                 </div>
             </div>
@@ -121,10 +130,10 @@
                 <div class="layers">
                     <div class="layer peers w-100 p-20 ai-c bdB">
                         <h5 class="lh-1 font-weight-bold m-0 peer peer-greed c-red-400">BOOKING REQUESTS</h5>
-                        <a class="peer" href="{{ route('meetingroom') }}">View all</a>
+                        <a class="peer" href="{{ route('bookings.index') }}">View all</a>
                     </div>
                     <div class="layer w-100 p-20">
-                        <p class="m-0">No booking requests are being processed. Want to <a href="{{route('meetingroom')}}">create a booking</a>?</p>
+                        <p class="m-0">No booking requests are being processed. Want to <a href="{{route('drafts.create.empty')}}">create a booking</a>?</p>
                     </div>
                 </div>
             </div>

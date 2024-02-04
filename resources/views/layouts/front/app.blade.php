@@ -7,7 +7,7 @@
     <meta name="description" content="The room booking solution for event organizers">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#fff"/>
-    <title>{{ $title }} · RoomBooker</title>
+    <title>Booker</title>
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <style>

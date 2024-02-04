@@ -1,6 +1,6 @@
 <!-- resources/views/meeting-room/create.blade.php -->
 
-@extends('layouts.app')
+@extends('layouts.front.app')
 
 @section('content')
     <h1>预约会议室</h1>
